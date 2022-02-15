@@ -1,0 +1,236 @@
+:host {
+  height: 100%;
+  width: fit-content;
+  display: inline-block;
+}
+
+
+.component-wrap {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &.select-mode {
+    max-width: 1032px;
+    height: 305px;
+    padding-left: 40px;
+    padding-right: 2px;
+    max-height: 100%;
+
+    cdk-virtual-scroll-viewport {
+      overflow: visible;
+      contain: initial;
+      z-index: 11;
+
+      ::ng-deep {
+        .cdk-virtual-scroll-content-wrapper {
+          contain: inherit;
+        }
+      }
+    }
+
+    .grid-body {
+      .row {
+        position: relative;
+
+        &:hover {
+          .hover-border {
+            display: block;
+            cursor: pointer;
+          }
+        }
+        .hover-border {
+          display: none;
+          position: absolute;
+          left: -2px;
+          top: -2px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid #EE2554;
+          max-width: 1032px;
+          z-index: 11;
+          border-radius: 4px;
+
+
+          &.active {
+            display: block;
+            background: #ee25541a;
+            .selected {
+              display: flex;
+            }
+          }
+
+          .selected {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            left: -40px;
+            top: 3px;
+            border: 1px solid #CC1F46;
+            box-sizing: border-box;
+            border-radius: 12px;
+            background: #EE2554;
+            display: none;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+
+  .row {
+    display: inline-block;
+    border-bottom: 1px solid #ddd;
+
+    .hover-border {
+      display: none;
+    }
+
+    .cell {
+      position: relative;
+      height: 100%;
+      display: inline-block;
+
+      &.fixed {
+        width: 45px;
+        position: sticky;
+        left: 0;
+        float: left;
+        z-index: 10;
+        .cell-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f6f6f6;
+          font-size: 13px;
+        }
+      }
+
+      .cell-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding: 3px;
+        box-sizing: border-box;
+      }
+    }
+    .cell + .cell{
+      border-left: 1px solid #eee;
+    }
+  }
+
+
+
+
+  .grid-header {
+    justify-content: center;
+    overflow: hidden;
+    height: 25px;
+
+    .row {
+      color: #757575;
+      height: 24px !important;
+
+      .fixed {
+        background: #f6f6f6;
+      }
+      .cell {
+        white-space: nowrap;
+        text-align: center;
+        background: #f6f6f6;
+        font-size: 13px;
+        line-height: 25px;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  }
+
+  .grid-body {
+    height: calc(100% - 50px);
+    flex: 1;
+
+    .grid-body-viewport {
+      height: 100%;
+      .no-order {
+        background-color: #ff5d5d !important;
+        color: #fff;
+        &:hover {
+          background-color: #ff2f2a !important;
+        }
+      }
+
+      ::ng-deep {
+        .cdk-virtual-scroll-content-wrapper {
+          display: inline-grid;
+        }
+      }
+    }
+
+    .img-wrap {
+      position: relative;
+      transform: translateX(45px);
+      z-index: 10;
+      .image {
+        position: absolute;
+        z-index: 50;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+
+    &.withScroll {
+      height: calc(100% - 65px);
+    }
+
+  }
+
+  .grid-footer {
+    height: 25px;
+    background-color: #eee;
+
+    .sheets {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      padding-left: 30px;
+      white-space: nowrap;
+      overflow-x: scroll;
+
+
+
+      &>li {
+        display: inline-block;
+        padding: 3px 15px;
+        border-right: solid 1px #ddd;
+        font-size: 12px;
+        cursor: pointer;
+
+        &:first-child {
+          border-left: solid 1px #ddd;
+        }
+
+        &.selected {
+          border-bottom: solid 3px #1f6e39;
+          background-color: #fff;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+}
+

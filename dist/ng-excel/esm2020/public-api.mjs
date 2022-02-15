@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of ng-excel
+ */
+export * from './lib/ng-excel.service';
+export * from './lib/component/excel-viewer/excel-viewer.component';
+export * from './lib/ng-excel.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL25nLWV4Y2VsL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyx3QkFBd0IsQ0FBQztBQUN2QyxjQUFjLHFEQUFxRCxDQUFDO0FBQ3BFLGNBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxyXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgbmctZXhjZWxcclxuICovXHJcblxyXG5leHBvcnQgKiBmcm9tICcuL2xpYi9uZy1leGNlbC5zZXJ2aWNlJztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvY29tcG9uZW50L2V4Y2VsLXZpZXdlci9leGNlbC12aWV3ZXIuY29tcG9uZW50JztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvbmctZXhjZWwubW9kdWxlJztcclxuIl19

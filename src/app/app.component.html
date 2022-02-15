@@ -1,0 +1,8 @@
+<input id="uploadBtn" type="file" (change)="readExcel($event)"
+       class="upload input-common" required />
+
+
+<ng-excel-viewer [selectMode]="true" [excelData]="excelData" style="height: 900px; width: 1500px;" (selected)="aa($event)" (unSelected)="bb($event)"></ng-excel-viewer>
+
+
+

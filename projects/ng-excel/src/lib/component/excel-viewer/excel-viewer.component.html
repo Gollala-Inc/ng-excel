@@ -1,0 +1,52 @@
+<div class="component-wrap" [ngClass]="{'select-mode': selectMode}" *ngIf="excelData && excelData[current]">
+  <div class="grid-header">
+    <div class="row" #gridHeader [ngStyle]="getRowStyle('header')">
+      <div class="cell fixed" #gridFixedHeader></div>
+      <div class="cell" *ngFor="let col of excelData[current].cols" [style.width.px]="col.width">
+        {{col.name}}
+      </div>
+    </div>
+  </div>
+  <div class="grid-body" [ngClass]="{'withScroll': hasScrollForSheets()}">
+    <cdk-virtual-scroll-viewport class="grid-body-viewport"
+                                 [itemSize]="itemSize" [minBufferPx]="500" [maxBufferPx]="500"
+                                 (scroll)="onScrollGrid($event)"
+                                 #scrollViewport>
+      <!--현재 상황에서 이미지 고려 안함, 다음으로 -->
+      <!--<div class="img-wrap" [style.transform]="'translate(45px, ' + virtualImageOffset + 'px)'">
+        <div class="image" *ngFor="let img of excelData[current].images" [ngStyle]="img.styleExpression">
+          <img [src]="'data:image/png;base64,' + img.image">
+        </div>
+      </div>-->
+      <ng-container *cdkVirtualFor="let row of excelData[current].rows; let r = index; templateCacheSize: 0;">
+        <div *ngIf="!row.hidden" class="row" [ngStyle]="getRowStyle('data', r || 0)" (click)="onClickRow(row)">
+          <div class="hover-border" [ngClass]="{'active': row.selected}">
+            <div class="selected">
+              <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.8899 1.13993C11.7947 1.04768 11.6674 0.996094 11.5349 0.996094C11.4024 0.996094 11.2751 1.04768 11.1799 1.13993L5.87988 6.48993C5.8334 6.5368 5.77815 6.57399 5.71722 6.59938C5.65629 6.62476 5.59091 6.63783 5.5249 6.63783C5.4589 6.63783 5.39357 6.62476 5.33264 6.59938C5.27171 6.57399 5.2164 6.5368 5.16992 6.48993L2.54993 3.84993C2.50345 3.80307 2.44814 3.76587 2.38721 3.74049C2.32628 3.7151 2.26089 3.70203 2.19489 3.70203C2.12888 3.70203 2.06355 3.7151 2.00262 3.74049C1.94169 3.76587 1.88639 3.80307 1.8399 3.84993L1.13989 4.54993C1.04764 4.64508 0.996094 4.7724 0.996094 4.90493C0.996094 5.03746 1.04764 5.16478 1.13989 5.25993L5.13989 9.31993C5.23504 9.41218 5.36241 9.46377 5.49493 9.46377C5.62746 9.46377 5.75476 9.41218 5.84991 9.31993L12.5599 2.54993C12.6515 2.45647 12.7028 2.33081 12.7028 2.19993C12.7028 2.06905 12.6515 1.9434 12.5599 1.84993L11.8899 1.13993Z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="cell fixed">
+            <div class="cell-item" [innerHTML]="(r + 1)"></div>
+          </div>
+          <div class="cell" *ngFor="let cell of row.cells; let c = index"
+               [style.width.px]="excelData[current].cols[c]?.width || 0">
+            <div class="cell-item" [innerHTML]="cell.cellValue" [ngStyle]="cell.cellStyle"></div>
+          </div>
+        </div>
+      </ng-container>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <div class="grid-footer" *ngIf="!selectMode">
+    <ul class="sheets" #sheetNames>
+      <li *ngFor="let sheet of excelData; let i = index" [ngClass]="i === current ? 'selected' : ''" (click)="selectSheet(i)">
+        {{ sheet.name }}
+      </li>
+    </ul>
+  </div>
+
+</div>
+<table >
+
+</table>
