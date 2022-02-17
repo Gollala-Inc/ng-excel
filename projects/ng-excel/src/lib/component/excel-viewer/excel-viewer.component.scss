@@ -51,6 +51,7 @@
           max-width: 1032px;
           z-index: 11;
           border-radius: 4px;
+          box-sizing: content-box;
 
 
           &.active {
@@ -135,6 +136,7 @@
     .row {
       color: #757575;
       height: 24px !important;
+      box-sizing: content-box;
 
       .fixed {
         background: #f6f6f6;
